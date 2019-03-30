@@ -51,8 +51,8 @@
             #skip:hover{
                 background-color: limegreen;
             }
-            .jumbotron{
-                background-image: url("assets/cereal.jpg");
+            #jumbo{
+                background-image: url("cereal.jpg");
                 background-size: cover;
             }
             #header{
@@ -69,7 +69,7 @@
     </head>
 
     <body>
-        <div class="jumbotron">
+        <div id="jumbo" class="jumbotron">
                     <h1 id="header" class="text-center">What Kind of Store Brand Breakfast Cereal Are You?</h1>
                     
         </div>
@@ -218,11 +218,31 @@
             console.log(currentUrl)
             $(document).ready(function () {
                 $("#loading").attr("src", currentUrl + "/loading.gif")
+                document.getElementById("jumbo").style.backgroundImage = 'url("/cereal.jpg")'
             })
             setTimeout(timeUp, 8000);
             function timeUp() {
                 document.getElementById("advertisement").style.display = "none";
             }
+            $("#submit").on("click", function(event) {
+                event.preventDefault();
+                var newSubmission = {
+                    name: $("#name").val().trim(),
+                    q1: $("#Question-1").val(),
+                    q2: $("#Question-2").val(),
+                    q3: $("#Question-3").val(),
+                    q4: $("#Question-4").val(),
+                    q5: $("#Question-5").val(),
+                    q6: $("#Question-6").val(),
+                    q7: $("#Question-7").val(),
+                    q8: $("#Question-8").val(),
+                    q9: $("#Question-9").val(),
+                    q10: $("#Question-10").val(),
+                }
+                console.log(newSubmission)
+                $.post("/api/submissions", newSubmission)
+                $("#name").val("");
+            })
         </script>
     </body>
 
