@@ -100,8 +100,8 @@ app.get("/static/loading", function(request, response){
 });
 
 app.get("/static/cereal", function(request, response){
-    response.sendFile(path.join(assets, "cereal.jpg"))
-    // response.sendFile(path.join(__dirname, "cereal.jpg"));
+    //response.sendFile(path.join(assets, "cereal.jpg"))
+     response.sendFile(path.join(__dirname, "cereal.jpg"));
 });
 
 app.get("/api/submissions", function(request, response){
