@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>What Kind of Store Brand Breakfast Cereal Are You?</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <style>
+            #jumbo{
+                /* background-image: url("cereal.jpg"); */
+                background-size: cover;
+            }
+            #header{
+                background: rgba(211, 211, 211, 0.558);
+                width: 70%;
+                margin-left: 15%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="jumbo" class="jumbotron">
+            <h1 id="header" class="text-center">What Kind of Store Brand Breakfast Cereal Are You?</h1>      
+        </div>
+        <div class="container mt-5 border border-dark">
+            <div class="mb-3 mt-2 ml-3"><h1>Your Result:</h1></div>
+            <hr>
+        </div>
+                
+        <script>
+                var currentUrl = window.location.origin
+                console.log(currentUrl)
+                var difference = 100;
+                var cerealName;
+                var cerealPic
+                $(document).ready(function () {
+                    document.getElementById("jumbo").style.backgroundImage = 'url("' + currentUrl + '/static/cereal.jpg")'
+                })
+                $.get("/api/tables/", function(data){
+                    if (data) {
+                        for(var i = 0; i < data.length - 1; i ++){
+                            var thisDif = 0
+                            for(var j = 2; j < data[i].length; j++){
+                                thisDif =+ Math.abs(data[i][j] - data[data.length - 1][j])
+                            }
+                            if(thisDif < difference){
+                                difference = thisDif
+                                cerealName = data[i][0]
+                                cerealPic = data[i][1]
+                            }
+                        }
+                    }
+                })
+        </script>
+    </body>
+</html>
