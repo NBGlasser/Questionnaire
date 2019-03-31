@@ -9,9 +9,9 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <style>
             #advertisement{
-                margin-top: -100%;
+                margin-top: -110%;
                 width: 100%;
-                height: 200%;
+                height: 250%;
                 position: absolute;
                 background-color: rgb(128, 128, 128, 0.5);
                 overflow: inherit;
@@ -52,7 +52,7 @@
                 background-color: limegreen;
             }
             #jumbo{
-                background-image: url("cereal.jpg");
+                /* background-image: url("cereal.jpg"); */
                 background-size: cover;
             }
             #header{
@@ -217,8 +217,8 @@
             var currentUrl = window.location.origin
             console.log(currentUrl)
             $(document).ready(function () {
-                $("#loading").attr("src", currentUrl + "/loading.gif")
-                document.getElementById("jumbo").style.backgroundImage = 'url("/cereal.jpg")'
+                $("#loading").attr("src", currentUrl + "/static/loading.gif")
+                document.getElementById("jumbo").style.backgroundImage = 'url("' + currentUrl + '/static/cereal.jpg")'
             })
             setTimeout(timeUp, 8000);
             function timeUp() {
@@ -240,8 +240,10 @@
                     q10: $("#Question-10").val(),
                 }
                 console.log(newSubmission)
-                $.post("/api/submissions", newSubmission)
-                $("#name").val("");
+                $.post("/api/submissions", newSubmission, function(data){
+                    $("#name").val("");
+                });
+                
             })
         </script>
     </body>

@@ -2,6 +2,17 @@ var express = require("express");
 var path = require("path");
 
 var app = express();
+var assets = path.join(__dirname, 'assets');
+
+
+app.use(express.static(path.join(__dirname, 'assets')))
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use('/static', express.static('assets'))
+
+
+
+
 var PORT = process.env.PORT || 3000;
 
 var submissions = []
@@ -14,12 +25,13 @@ app.get("/result", function(request, response){
     response.sendFile(path.join(__dirname, "results.html"));
 });
 
-app.get("/loading", function(request, response){
+app.get("/static/loading", function(request, response){
     response.sendFile(path.join(__dirname, "loading.gif"));
 });
 
-app.get("/cereal", function(request, response){
-    response.sendFile(path.join(__dirname, "cereal.jpg"));
+app.get("/static/cereal", function(request, response){
+    response.sendFile(path.join(assets, "cereal.jpg"))
+    // response.sendFile(path.join(__dirname, "cereal.jpg"));
 });
 
 app.get("/api/submissions", function(request, response){
@@ -28,6 +40,7 @@ app.get("/api/submissions", function(request, response){
 
 app.post("/api/submissions", function(request, response){
     newSubmission = request.body;
+    console.log(newSubmission)
     submissions.push(newSubmission)
 });
 
