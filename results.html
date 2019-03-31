@@ -26,6 +26,12 @@
         <div class="container mt-5 border border-dark">
             <div class="mb-3 mt-2 ml-3"><h1>Your Result:</h1></div>
             <hr>
+            <div id="name-div">
+
+            </div>
+            <div id="pic-div">
+
+            </div>
         </div>
                 
         <script>
@@ -55,6 +61,8 @@
                             }
                         }
                         alert(cerealName)
+                        $("#name-div").html("<h1>" + cerealName + "</h1>")
+                        $("#pic-div").html("<img src=" + cerealPic + ">")
                     }
                 })
                
