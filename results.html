@@ -46,7 +46,7 @@
                 $.get("/api/submissions", function(data){
                     console.log(data)
                     if (data) {
-                        for(var i = 0; i < data.length - 1; i++){
+                        for(var i = 0; i < 5; i++){
                             var thisDif = 0
                             var arr = Object.values(data[i])
                             for(var j = 2; j < (arr.length); j++){
@@ -60,7 +60,6 @@
                                 cerealPic = data[i].pic
                             }
                         }
-                        alert(cerealName)
                         $("#name-div").html("<h1>" + cerealName + "</h1>")
                         $("#pic-div").html("<img src=" + cerealPic + ">")
                     }
