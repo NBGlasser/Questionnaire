@@ -37,21 +37,28 @@
                 $(document).ready(function () {
                     document.getElementById("jumbo").style.backgroundImage = 'url("' + currentUrl + '/static/cereal.jpg")'
                 })
-                $.get("/api/tables/", function(data){
+                $.get("/api/submissions", function(data){
+                    console.log(data)
                     if (data) {
-                        for(var i = 0; i < data.length - 1; i ++){
+                        for(var i = 0; i < data.length - 1; i++){
                             var thisDif = 0
-                            for(var j = 2; j < data[i].length; j++){
-                                thisDif =+ Math.abs(data[i][j] - data[data.length - 1][j])
+                            var arr = Object.values(data[i])
+                            for(var j = 2; j < (arr.length); j++){
+                                thisDif = thisDif + (Math.abs(arr[j] - Object.values(data[(data.length - 1)])[j]))
+                                console.log(thisDif)
                             }
                             if(thisDif < difference){
                                 difference = thisDif
-                                cerealName = data[i][0]
-                                cerealPic = data[i][1]
+                                cerealName = data[i].name
+                                console.log(cerealName)
+                                cerealPic = data[i].pic
                             }
                         }
+                        alert(cerealName)
                     }
                 })
+               
+                
         </script>
     </body>
 </html>

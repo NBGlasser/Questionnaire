@@ -87,7 +87,7 @@
                 <hr>
                 <div class="form-group">
                     <label for="searchterm">Your Photo(url):</label>
-                    <input class="form-control" id="name">
+                    <input class="form-control" id="pic">
                 </div>    
                 <hr>
                 <label>Question 1</label>
@@ -231,6 +231,7 @@
                 event.preventDefault();
                 var newSubmission = {
                     name: $("#name").val().trim(),
+                    pic: $("#pic").val().trim(),
                     q1: $("#Question-1").val(),
                     q2: $("#Question-2").val(),
                     q3: $("#Question-3").val(),
