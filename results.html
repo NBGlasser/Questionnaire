@@ -21,6 +21,15 @@
                 float: right;
                 margin-top: -35px;
                 margin-bottom: 8px;
+                clear: both;
+            }
+            .container{
+                background-color: white;
+                margin-top: -30px;
+                margin-bottom: -35px;
+            }
+            body{
+                background-color: rgb(80, 80, 80) 
             }
         </style>
     </head>
@@ -28,17 +37,19 @@
         <div id="jumbo" class="jumbotron">
             <h1 id="header" class="text-center">What Kind of Store Brand Breakfast Cereal Are You?</h1>      
         </div>
-        <div class="container mt-5 border border-dark">
+        <div class="container border border-dark">
             <div class="mb-3 mt-2 ml-3"><h1>Your Result:</h1></div>
             <hr>
-            <div id="name-div">
+            <div class="mb-3 mt-2 ml-3" id="name-div">
 
             </div>
-            <div id="pic-div">
+            <div class="mb-3 mt-2 ml-3" id="pic-div" class="mb-5">
 
             </div>
-            <a href="/"><button id="back" class="btn-primary">Back</button></a>
+            <div>
+                <a href="/"><button id="back" class="btn-primary mr-3">Back</button></a>
             </div>
+        </div>
                 
         <script>
                 var currentUrl = window.location.origin
